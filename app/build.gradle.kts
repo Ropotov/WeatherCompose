@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.parcelize)
 }
 
 android {
@@ -59,6 +61,20 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    implementation(libs.mvikotlin)
+    implementation(libs.mvikotlin.main)
+    implementation(libs.mvikotlin.extensions.coroutines)
+    implementation(libs.decompose)
+    implementation(libs.decompose.compose)
+    implementation(libs.room.core)
+    implementation(libs.room.compiler)
+    implementation(libs.dagger.core)
+    implementation(libs.dagger.compiler)
+    implementation(libs.retorfit.core)
+    implementation(libs.retorfit.gsonConverter)
+    implementation(libs.glide.compose)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
