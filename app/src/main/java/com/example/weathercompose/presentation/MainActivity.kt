@@ -1,4 +1,4 @@
-package com.example.weathercompose
+package com.example.weathercompose.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.weathercompose.ui.theme.WeatherComposeTheme
+import com.example.weathercompose.presentation.ui.theme.WeatherComposeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
