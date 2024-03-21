@@ -20,7 +20,12 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val key = property("apiKey")?.toString() ?: error("api key is not added")
+        buildConfigField("String", "WEATHER_API_KEY", "\"$key\"")
+
     }
+
 
     buildTypes {
         release {
@@ -40,6 +45,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -68,9 +74,9 @@ dependencies {
     implementation(libs.decompose)
     implementation(libs.decompose.compose)
     implementation(libs.room.core)
-    implementation(libs.room.compiler)
+    ksp(libs.room.compiler)
     implementation(libs.dagger.core)
-    implementation(libs.dagger.compiler)
+    ksp(libs.dagger.compiler)
     implementation(libs.retorfit.core)
     implementation(libs.retorfit.gsonConverter)
     implementation(libs.glide.compose)
