@@ -14,7 +14,7 @@ import com.example.weathercompose.presentation.favourite.FavouriteStore.State
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-internal interface FavouriteStore : Store<Intent, State, Label> {
+interface FavouriteStore : Store<Intent, State, Label> {
 
     sealed interface Intent {
         data object ClickSearch : Intent
@@ -49,7 +49,7 @@ internal interface FavouriteStore : Store<Intent, State, Label> {
     }
 }
 
-internal class FavouriteStoreFactory @Inject constructor(
+class FavouriteStoreFactory @Inject constructor(
     private val storeFactory: StoreFactory,
     private val getFavouriteCitiesUseCase: GetFavouriteCitiesUseCase,
     private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase,
