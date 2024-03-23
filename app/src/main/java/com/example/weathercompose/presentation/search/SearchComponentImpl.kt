@@ -6,18 +6,21 @@ import com.arkivanov.mvikotlin.extensions.coroutines.labels
 import com.arkivanov.mvikotlin.extensions.coroutines.stateFlow
 import com.example.weathercompose.domain.entity.City
 import com.example.weathercompose.presentation.componentScope
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class SearchComponentImpl @Inject constructor(
-    private val componentContext: ComponentContext,
+class SearchComponentImpl @AssistedInject constructor(
     private val searchStoreFactory: SearchStoreFactory,
-    private val openReason: OpenReason,
-    private val onBackClick: () -> Unit,
-    private val onSaveToFavouriteClick: () -> Unit,
-    private val onClickCity: (city: City) -> Unit,
+    @Assisted("componentContext") private val componentContext: ComponentContext,
+    @Assisted("openReason") private val openReason: OpenReason,
+    @Assisted("onBackClick") private val onBackClick: () -> Unit,
+    @Assisted("onSaveToFavouriteClick") private val onSaveToFavouriteClick: () -> Unit,
+    @Assisted("onClickCity") private val onClickCity: (city: City) -> Unit,
 ) : SearchComponent, ComponentContext by componentContext {
 
     val store = instanceKeeper.getStore { searchStoreFactory.create(openReason) }
@@ -52,5 +55,16 @@ class SearchComponentImpl @Inject constructor(
 
     override fun changeSearchQuery(query: String) {
         store.accept(SearchStore.Intent.ChangeSearchQuery(query))
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(
+            @Assisted("componentContext") componentContext: ComponentContext,
+            @Assisted("openReason") openReason: OpenReason,
+            @Assisted("onBackClick") onBackClick: () -> Unit,
+            @Assisted("onSaveToFavouriteClick") onSaveToFavouriteClick: () -> Unit,
+            @Assisted("onClickCity") onClickCity: (city: City) -> Unit,
+        ): SearchComponentImpl
     }
 }
