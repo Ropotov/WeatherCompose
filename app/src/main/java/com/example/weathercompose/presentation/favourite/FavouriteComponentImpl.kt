@@ -8,12 +8,13 @@ import com.example.weathercompose.domain.entity.City
 import com.example.weathercompose.presentation.componentScope
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class FavouriteComponentImpl @Inject constructor(
+class FavouriteComponentImpl @AssistedInject constructor(
     private val favouriteStoreFactory: FavouriteStoreFactory,
     @Assisted("componentContext") private val componentContext: ComponentContext,
     @Assisted("onCityClick") private val onCityClick: (City) -> Unit,
