@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Weather Compose</string>
+    <string name="add_new_favourite_city_content_description">Add new favourite city</string>
+    <string name="add_city">Add city</string>
+    <string name="search">Search</string>
+    <string name="icon_weather_content_description">Icon weather</string>
+    <string name="button_back_content_description">Button back</string>
+    <string name="empty_result">Ничего не найдено</string>
+    <string name="error_result">Что то пошло не так</string>
 </resources>
